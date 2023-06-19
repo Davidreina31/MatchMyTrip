@@ -9,15 +9,9 @@ import { ActivityDTO } from '../models/ActivityDTO';
 })
 export class HomeComponent implements OnInit {
 
-  activities: ActivityDTO[] = [];
-
-  constructor(private _actityService: ActivityService) { }
+  constructor() { }
 
   ngOnInit() {
-    this._actityService.getAll().subscribe(data => {
-      this.activities = data;
-      console.log(this.activities);
-    })
   }
 
 }
