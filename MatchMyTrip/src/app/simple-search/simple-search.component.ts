@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivityService } from '../services/Activity.service';
+import { ActivityDTO } from '../models/ActivityDTO';
 
 @Component({
   selector: 'app-simple-search',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimpleSearchComponent implements OnInit {
 
-  constructor() { }
+  activities: ActivityDTO[] = [];
+  
+  constructor(private _activityService: ActivityService) { }
 
   ngOnInit() {
+    this._activityService.getAll().subscribe(data => {
+      this.activities = data;
+      console.log(data);
+    })
   }
 
 }

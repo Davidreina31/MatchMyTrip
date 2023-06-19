@@ -30,4 +30,8 @@ export class NavbarComponent implements OnInit {
     this.currentUser.role = 0;
   }
 
+  public getUserRole() {
+    return this.currentUser.role;
+  }
+
 }

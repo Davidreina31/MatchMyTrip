@@ -16,15 +16,16 @@ export class HomeComponent implements OnInit {
 
   userInfo: any;
   user: UserDTO;
-
   constructor(private auth: AuthService
-    , private _sessionService: SessionService) { }
+    , private _sessionService: SessionService
+    ) { }
 
   ngOnInit() {
     this.auth.user$.subscribe(data => {
       this.userInfo = data;
       this.loadData();
     })
+    
   }
   loadData(): any {
     this.user = new UserDTO();
@@ -35,7 +36,7 @@ export class HomeComponent implements OnInit {
     console.log(this.user);
     this._sessionService.getToken(this._sessionService.loginCredentials).subscribe(data=> {
       console.log(data);
-      sessionStorage.setItem("jwt",data.access_token);
+      sessionStorage.setItem("jwt", data.access_token);
     })
     console.log(this._sessionService.isLogged());
   }

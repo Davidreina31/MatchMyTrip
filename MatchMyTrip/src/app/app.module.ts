@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,15 +12,21 @@ import { SpecificSearchComponent } from './specific-search/specific-search.compo
 import { AuthModule } from '@auth0/auth0-angular';
 import { LoginComponent } from './login/login.component';
 import { InterceptorService } from './services/Interceptor.service';
+import { ReportComponent } from './report/report.component';
+
+export function tokenGetter() {
+  return sessionStorage.getItem("jwt");
+}
 
 @NgModule({
-  declarations: [					
+  declarations: [						
     AppComponent,
       HomeComponent,
       NavbarComponent,
       SimpleSearchComponent,
       SpecificSearchComponent,
-      LoginComponent
+      LoginComponent,
+      ReportComponent
    ],
   imports: [
     BrowserModule,
@@ -27,11 +34,14 @@ import { InterceptorService } from './services/Interceptor.service';
     HttpClientModule,
     AuthModule.forRoot({
       domain: 'dev-c4fngek5.us.auth0.com',
-      clientId: 'WwZoTGLDv2VeqfsEM23hasNVRMb1RdzF'
+      clientId: 'WwZoTGLDv2VeqfsEM23hasNVRMb1RdzF',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
     }),
   ],
   providers: [
-   
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

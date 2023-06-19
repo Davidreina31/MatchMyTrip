@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { SimpleSearchComponent } from './simple-search/simple-search.component';
 import { SpecificSearchComponent } from './specific-search/specific-search.component';
 import { LoginComponent } from './login/login.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'report',
+    component: ReportComponent
   },
 ];
 
