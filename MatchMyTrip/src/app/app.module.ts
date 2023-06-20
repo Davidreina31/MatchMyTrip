@@ -14,15 +14,16 @@ import { LoginComponent } from './login/login.component';
 import { InterceptorService } from './services/Interceptor.service';
 import { ReportComponent } from './report/report.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("jwt");
 }
 
 @NgModule({
-  declarations: [										
+  declarations: [											
     AppComponent,
       HomeComponent,
       NavbarComponent,
@@ -31,13 +32,15 @@ export function tokenGetter() {
       LoginComponent,
       ReportComponent,
       MyProfileComponent,
-      UpdateProfileComponent
+      UpdateProfileComponent,
+      ProfileComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     AuthModule.forRoot({
       domain: 'dev-c4fngek5.us.auth0.com',
       clientId: 'WwZoTGLDv2VeqfsEM23hasNVRMb1RdzF',

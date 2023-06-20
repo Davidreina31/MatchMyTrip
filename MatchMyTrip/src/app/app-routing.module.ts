@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { ReportComponent } from './report/report.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'update-profile/:id',
     component: UpdateProfileComponent
+  },
+  {
+    path: 'profile/:id',
+    component: ProfileComponent
   },
 ];
 

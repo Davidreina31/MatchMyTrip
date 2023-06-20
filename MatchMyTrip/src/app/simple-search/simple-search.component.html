@@ -1,9 +1,24 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p>
-  simple-search works!
-</p>
+<div class="container">
+  <div class="row height d-flex justify-content-center align-items-center">
+    <div class="col-md-8">
+      <div class="search">
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control" placeholder="Entrer un mot clé" [(ngModel)]="keyWord">
+        <button class="btn btn-primary" (click)="searchByKeyWord(keyWord)">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="list-group">
+  <ng-container *ngFor="let item of profiles">
+    <br>
+    <a class="list-group-item list-group-item-action flex-column align-items-start active"  routerLink="../profile/{{item.id}}">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{item?.userName}}</h5>
+      </div>
+      <p class="mb-1">{{item?.description}}</p>
+    </a>
+  </ng-container>
+</div>
