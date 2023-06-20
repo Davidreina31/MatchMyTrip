@@ -16,8 +16,11 @@ export class HomeComponent implements OnInit {
 
   userInfo: any;
   user: UserDTO;
+
   constructor(private auth: AuthService
     , private _sessionService: SessionService
+    , private _userService: UserService
+    , private _router: Router
     ) { }
 
   ngOnInit() {
@@ -25,15 +28,22 @@ export class HomeComponent implements OnInit {
       this.userInfo = data;
       this.loadData();
     })
-    
   }
   loadData(): any {
     this.user = new UserDTO();
     this.user.userName = this.userInfo.nickname;
     this.user.email = this.userInfo.name;
-    // this.user.sub = this.userInfo.sub;
+    this.user.sub = this.userInfo.sub;
     this.user.role = 0;
+    this.user.firstName = this.userInfo.name;
+    this.user.lastName = this.userInfo.name;
     console.log(this.user);
+
+    this._userService.add(this.user).subscribe({
+      next: () => this._router.navigate(["/home"]),
+      error: (error) => console.log(error)
+    });
+
     this._sessionService.getToken(this._sessionService.loginCredentials).subscribe(data=> {
       console.log(data);
       sessionStorage.setItem("jwt", data.access_token);

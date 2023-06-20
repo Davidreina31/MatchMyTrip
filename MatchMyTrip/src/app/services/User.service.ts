@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { UserDTO } from '../models/UserDTO';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class UserService {
     private _url: string = "http://localhost:5038/api/user/"
 
@@ -17,8 +19,12 @@ export class UserService {
         return this._client.get<UserDTO[]>(this._url);
     }
 
-    public getOne(id: number): Observable<UserDTO> {
+    public getById(id: number): Observable<UserDTO> {
         return this._client.get<UserDTO>(this._url + id);
+    }
+
+    public getBySub(sub: string): Observable<UserDTO> {
+        return this._client.get<UserDTO>(this._url + "GetBySub/"+ sub);
     }
 
     public update(id: number, a: UserDTO): Observable<void> {

@@ -5,6 +5,8 @@ import { SimpleSearchComponent } from './simple-search/simple-search.component';
 import { SpecificSearchComponent } from './specific-search/specific-search.component';
 import { LoginComponent } from './login/login.component';
 import { ReportComponent } from './report/report.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
   {
     path: 'report',
     component: ReportComponent
+  },
+  {
+    path: 'my-profile',
+    component: MyProfileComponent
+  },
+  {
+    path: 'update-profile/:id',
+    component: UpdateProfileComponent
   },
 ];
 

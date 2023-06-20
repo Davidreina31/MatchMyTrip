@@ -13,25 +13,31 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { LoginComponent } from './login/login.component';
 import { InterceptorService } from './services/Interceptor.service';
 import { ReportComponent } from './report/report.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("jwt");
 }
 
 @NgModule({
-  declarations: [						
+  declarations: [										
     AppComponent,
       HomeComponent,
       NavbarComponent,
       SimpleSearchComponent,
       SpecificSearchComponent,
       LoginComponent,
-      ReportComponent
+      ReportComponent,
+      MyProfileComponent,
+      UpdateProfileComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     AuthModule.forRoot({
       domain: 'dev-c4fngek5.us.auth0.com',
       clientId: 'WwZoTGLDv2VeqfsEM23hasNVRMb1RdzF',

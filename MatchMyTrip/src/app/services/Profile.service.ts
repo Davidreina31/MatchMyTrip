@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { ProfileDTO } from '../models/ProfileDTO';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ProfileService {
     private _url: string = "http://localhost:5038/api/profile/"
 
@@ -17,15 +19,19 @@ export class ProfileService {
         return this._client.get<ProfileDTO[]>(this._url);
     }
 
-    public getOne(id: number): Observable<ProfileDTO> {
+    public getById(id: string): Observable<ProfileDTO> {
         return this._client.get<ProfileDTO>(this._url + id);
     }
 
-    public update(id: number, a: ProfileDTO): Observable<void> {
+    public getByUserId(id: string): Observable<ProfileDTO> {
+        return this._client.get<ProfileDTO>(this._url + "GetByUserId/" + id);
+    }
+
+    public update(id: string, a: ProfileDTO): Observable<void> {
         return this._client.put<void>(this._url + id, a);
     }
 
-    public delete(id: number): Observable<void> {
+    public delete(id: string): Observable<void> {
         return this._client.delete<void>(this._url + id);
     }
 
