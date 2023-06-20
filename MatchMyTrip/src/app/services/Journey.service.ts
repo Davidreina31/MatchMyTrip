@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { JourneyDTO } from '../models/JourneyDTO';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class JourneyService {
     private _url: string = "http://localhost:5038/api/journey/"
 
@@ -19,6 +21,10 @@ export class JourneyService {
 
     public getOne(id: number): Observable<JourneyDTO> {
         return this._client.get<JourneyDTO>(this._url + id);
+    }
+
+    public getByProfileId(id: string): Observable<JourneyDTO[]> {
+        return this._client.get<JourneyDTO[]>(this._url + "GetByProfileId/" + id);
     }
 
     public update(id: number, a: JourneyDTO): Observable<void> {

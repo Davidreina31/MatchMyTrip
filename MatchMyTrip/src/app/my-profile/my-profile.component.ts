@@ -5,6 +5,9 @@ import { UserDTO } from '../models/UserDTO';
 import { AuthService } from '@auth0/auth0-angular';
 import { ProfileDTO } from '../models/ProfileDTO';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { JourneyDTO } from '../models/JourneyDTO';
+import { JourneyService } from '../services/Journey.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -20,6 +23,7 @@ export class MyProfileComponent implements OnInit {
   completed: boolean = false;
   form: FormGroup;
   isFormReady: boolean = false;
+  journeys: JourneyDTO[] = [];
 
   
   constructor(
@@ -27,13 +31,15 @@ export class MyProfileComponent implements OnInit {
     private _userService: UserService,
     private _auth: AuthService,
     private _builder: FormBuilder,
+    private _router: Router,
+    private _journeyService: JourneyService
     ) { }
 
   ngOnInit() {
     this._auth.user$.subscribe(data => {
       this.userInfo = data;
       this.loadData();
-      this.isFormReady = true;
+      
     })
 
     this.form = this._builder.group({
@@ -51,6 +57,10 @@ export class MyProfileComponent implements OnInit {
         if(this.currentProfile != null || this.currentProfile != undefined){
           this.completed = true;
         }
+        this._journeyService.getByProfileId(this.currentProfile.id).subscribe(data => {
+          this.journeys = data;
+          this.isFormReady = true;
+        })
       })
     })
   }
@@ -66,6 +76,10 @@ export class MyProfileComponent implements OnInit {
         error: (error) => console.log(error)
       })
     }
+  }
+
+  public addJourney(){
+    this._router.navigate(["/add-journey/" + this.currentProfile.id]);
   }
 
 }

@@ -1,0 +1,38 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<form [formGroup]="form" (ngSubmit)="addJourney()">
+  <div class="form-group">
+    <label for="destination">Destination</label>
+    <input type="text" class="form-control" id="destination" placeholder="destination" formControlName="destination">
+  </div>
+  <div class="form-group">
+    <label for="nbrOfDays">Nombre de jours</label>
+    <input type="number" class="form-control" id="nbrOfDays" formControlName="nbrOfDays" placeholder="nombre de jours">
+  </div>
+  <div class="form-group">
+    <label for="seasons">Saison</label>
+    <br>
+    <select formControlName="seasons">
+        <option value= 0>
+          printemps
+        </option>
+        <option value = 1>
+          été
+        </option>
+        <option value = 2>
+          automne
+        </option>
+        <option value = 3>
+          hiver
+        </option>
+      </select>
+  </div>
+  <label>
+    <input type="submit" value="Confirmer" [disabled]="form.invalid">
+</label>
+</form>
