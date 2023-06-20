@@ -5,6 +5,7 @@
 <br>
 <br>
 <br>
+<ng-container *ngIf="isFormReady">
 <div *ngIf="this.completed">
   <div class="col-md-5 mx-auto"> <!-- Profile widget -->
     <div class="bg-white shadow rounded overflow-hidden">
@@ -50,3 +51,4 @@
 </label>
 </form>
 </div>
+</ng-container>

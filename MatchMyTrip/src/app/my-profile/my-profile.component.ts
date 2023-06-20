@@ -19,6 +19,7 @@ export class MyProfileComponent implements OnInit {
   profile: ProfileDTO;
   completed: boolean = false;
   form: FormGroup;
+  isFormReady: boolean = false;
 
   
   constructor(
@@ -32,6 +33,7 @@ export class MyProfileComponent implements OnInit {
     this._auth.user$.subscribe(data => {
       this.userInfo = data;
       this.loadData();
+      this.isFormReady = true;
     })
 
     this.form = this._builder.group({
