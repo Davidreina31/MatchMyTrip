@@ -9,6 +9,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddJourneyComponent } from './add-journey/add-journey.component';
+import { ActivitiesComponent } from './activities/activities.component';
 
 const routes: Routes = [
   {
@@ -51,7 +52,11 @@ const routes: Routes = [
   {
     path: 'add-journey/:id',
     component: AddJourneyComponent
-  }
+  },
+  {
+    path: 'activities',
+    component: ActivitiesComponent
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,35 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h3>Ajouter une activité :</h3>
+<br>
+<form [formGroup]="form" (ngSubmit)="addActivity()">
+  <div class="form-group">
+    <label for="activityName">Nom de l'activité</label>
+    <input type="text" class="form-control" id="activityName" placeholder="nom de l'activité" formControlName="activityName">
+  </div>
+  <label>
+    <input type="submit" value="Confirmer" [disabled]="form.invalid">
+  </label>
+</form>
+<br>
+<br>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of activities">
+      <th scope="row">{{item?.id}}</th>
+      <td>{{item?.activityName}}</td>
+      <td><input type="button" class="btn-danger" value="Supprimer" (click)="deleteActivity(item.id)"></td>
+  </tbody>
+</table>

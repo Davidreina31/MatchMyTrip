@@ -28,7 +28,7 @@ export class ActivityService {
         return this._client.put<void>(this._url + id, a);
     }
 
-    public delete(id: number): Observable<void> {
+    public delete(id: string): Observable<void> {
         return this._client.delete<void>(this._url + id);
     }
 

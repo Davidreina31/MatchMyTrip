@@ -18,13 +18,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddJourneyComponent } from './add-journey/add-journey.component';
+import { ActivitiesComponent } from './activities/activities.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("jwt");
 }
 
 @NgModule({
-  declarations: [												
+  declarations: [													
     AppComponent,
       HomeComponent,
       NavbarComponent,
@@ -35,7 +36,8 @@ export function tokenGetter() {
       MyProfileComponent,
       UpdateProfileComponent,
       ProfileComponent,
-      AddJourneyComponent
+      AddJourneyComponent,
+      ActivitiesComponent
    ],
   imports: [
     BrowserModule,
