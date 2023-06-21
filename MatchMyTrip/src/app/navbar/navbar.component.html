@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-dark text-uppercase fixed-top" id="mainNav">
+<nav  class="navbar navbar-expand-lg bg-dark text-uppercase fixed-top" id="mainNav">
   <div class="container">
       <a class="navbar-brand js-scroll-trigger" style="color: white;" routerLink="/home">Accueil</a>
       <button
@@ -24,6 +24,10 @@
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="color: white;"
                         routerLink="/activities">Activités</a></li>
             </div>
+            <!-- <div *ngIf="this._sessionService.isLogged() && this.getUserRole() == 0">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="color: white;"
+                        routerLink="/activities">Profil management</a></li>
+            </div> -->
             <div *ngIf="this._sessionService.isLogged() && this.getUserRole() == 0">
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style="color: white;"
                         routerLink="/report">Signalements</a></li>

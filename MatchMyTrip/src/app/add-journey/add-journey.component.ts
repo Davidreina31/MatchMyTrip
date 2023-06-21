@@ -39,6 +39,7 @@ export class AddJourneyComponent implements OnInit {
       this.journey.destination = this.form.controls['destination'].value;
       this.journey.nbrOfDays = this.form.controls['nbrOfDays'].value;
       this.journey.seasons = parseInt(this.form.controls['seasons'].value);
+      this.journey.journey_Activities = [];
       this._journeyService.add(this.journey).subscribe({
         next: () => this._router.navigate(["/my-profile"]),
         error: (error) => console.log(error)

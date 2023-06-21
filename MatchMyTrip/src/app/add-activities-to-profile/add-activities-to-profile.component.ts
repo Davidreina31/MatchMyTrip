@@ -71,6 +71,8 @@ export class AddActivitiesToProfileComponent implements OnInit {
       this.journeyActivity = new Journey_ActivityDTO();
       this.journeyActivity.journeyId = this.journeyId;
       this.journeyActivity.activityId = selectedActivities[i].id;
+      this.journeyActivity.activity = selectedActivities[i];
+      console.log(this.journeyActivity);
       this._journeyActivityService.add(this.journeyActivity).subscribe({
         next: () => this._router.navigate(["/my-profile"]),
         error: (error) => {

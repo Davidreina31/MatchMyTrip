@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
     this.user.userName = this.userInfo.nickname;
     this.user.email = this.userInfo.name;
     this.user.sub = this.userInfo.sub;
-    this.user.role = 0;
     this.user.firstName = this.userInfo.name;
     this.user.lastName = this.userInfo.name;
     console.log(this.user);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../services/Session.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserDTO } from '../models/UserDTO';
+import { UserService } from '../services/User.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
   userInfo: any;
   currentUser: UserDTO
 
-  constructor(public _sessionService: SessionService, private _authService: AuthService) { }
+  constructor(public _sessionService: SessionService, private _userService: UserService, private _authService: AuthService) { }
 
   ngOnInit() {
     this._authService.user$.subscribe(data => {
@@ -23,11 +24,13 @@ export class NavbarComponent implements OnInit {
   }
   loadData(): any {
     console.log(this.userInfo);
-    this.currentUser = new UserDTO();
-    this.currentUser.userName = this.userInfo?.nickname;
-    this.currentUser.email = this.userInfo?.name;
+    this._userService.getBySub(this.userInfo.sub).subscribe(data => {
+      this.currentUser = data;
+      console.log(this.currentUser);
+
+    })
     // this.user.sub = this.userInfo.sub;
-    this.currentUser.role = 0;
+    // this.currentUser.role = 0;
   }
 
   public getUserRole() {

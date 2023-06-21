@@ -11,7 +11,7 @@
         <div class="profile mr-3"><img
             src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
             alt="..." width="130" class="rounded mb-2 img-thumbnail"></div>
-            
+
         <div class="media-body mb-5 text-white">
           <h4 class="mt-0 mb-0">{{this.currentProfile.userName}}</h4>
           <br>
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="bg-light p-4 d-flex justify-content-end text-center">
-      
+
     </div>
     <div class="px-4 py-3">
       <h5 class="mb-0">A propos</h5>
@@ -42,6 +42,11 @@
       <p *ngIf="item?.seasons == 1" class="mb-1">Période : Eté</p>
       <p *ngIf="item?.seasons == 2" class="mb-1">Période : Automne</p>
       <p *ngIf="item?.seasons == 3" class="mb-1">Période : Hiver</p>
+      <br>
+      <p class="mb-1">Activités : </p>
+      <ng-container *ngFor="let a of item.journey_Activities">
+        <li class="mb-1">{{a.activity.activityName}}</li>
+      </ng-container>
     </a>
   </ng-container>
 </div>
