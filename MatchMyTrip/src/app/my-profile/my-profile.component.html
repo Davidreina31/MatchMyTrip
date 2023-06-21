@@ -51,6 +51,7 @@
         <p *ngIf="item?.seasons == 1" class="mb-1">Période : Eté</p>
         <p *ngIf="item?.seasons == 2" class="mb-1">Période : Automne</p>
         <p *ngIf="item?.seasons == 3" class="mb-1">Période : Hiver</p>
+        <small><input type="button" class="btn-secondary" value="Détails" (click)="addActivity(item.id)"></small>
       </a>
     </ng-container>
   </div>

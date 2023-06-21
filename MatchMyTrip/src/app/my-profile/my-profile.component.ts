@@ -82,4 +82,7 @@ export class MyProfileComponent implements OnInit {
     this._router.navigate(["/add-journey/" + this.currentProfile.id]);
   }
 
+  public addActivity(id: string){
+    this._router.navigate(["/add-activities/" + id]);
+  }
 }

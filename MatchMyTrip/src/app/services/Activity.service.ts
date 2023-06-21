@@ -20,7 +20,7 @@ export class ActivityService {
         return this._client.get<ActivityDTO[]>(this._url);
     }
 
-    public getOne(id: number): Observable<ActivityDTO> {
+    public getOne(id: string): Observable<ActivityDTO> {
         return this._client.get<ActivityDTO>(this._url + id);
     }
 

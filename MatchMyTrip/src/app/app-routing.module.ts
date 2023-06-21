@@ -10,6 +10,7 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { ProfileComponent } from './profile/profile.component';
 import { AddJourneyComponent } from './add-journey/add-journey.component';
 import { ActivitiesComponent } from './activities/activities.component';
+import { AddActivitiesToProfileComponent } from './add-activities-to-profile/add-activities-to-profile.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'activities',
     component: ActivitiesComponent
+  },
+  {
+    path: 'add-activities/:id',
+    component: AddActivitiesToProfileComponent
   },
 ];
 

@@ -1,0 +1,38 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<ng-container *ngIf="isFormReady">
+  <div class="list-group">
+    <br>
+    <a class="list-group-item list-group-item-action flex-column align-items-start active">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{journey?.destination}}</h5>
+      </div>
+      <p class="mb-1">Durée : {{journey?.nbrOfDays}} jours</p>
+      <p *ngIf="journey?.seasons == 0" class="mb-1">Période : Printems</p>
+      <p *ngIf="journey?.seasons == 1" class="mb-1">Période : Eté</p>
+      <p *ngIf="journey?.seasons == 2" class="mb-1">Période : Automne</p>
+      <p *ngIf="journey?.seasons == 3" class="mb-1">Période : Hiver</p>
+      <p class="mb-1">Activités : </p>
+      <ng-container *ngFor="let item of activitiesByJourney">
+        <p class="mb-1">{{item.activityName}}</p>
+      </ng-container>
+    </a>
+  </div>
+  <br>
+  <div>
+    <h2>Activités disponibles :</h2>
+    <ul>
+      <li *ngFor="let item of activities">
+        <label>
+          <input type="checkbox" [(ngModel)]="item.isSelected">
+          {{ item.activityName }} 
+        </label>
+      </li>
+    </ul>
+    <button class="btn-success" (click)="addActivityToJourney()">Ajouter les activités au voyage</button>
+  </div>
+</ng-container>
