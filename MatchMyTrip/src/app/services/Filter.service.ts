@@ -3,7 +3,9 @@ import { FilterDTO } from '../models/FilterDTO';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class FilterService {
     private _url: string = "http://localhost:5038/api/filter/"
 
@@ -17,7 +19,7 @@ export class FilterService {
         return this._client.get<FilterDTO[]>(this._url);
     }
 
-    public getOne(id: number): Observable<FilterDTO> {
+    public getOne(id: string): Observable<FilterDTO> {
         return this._client.get<FilterDTO>(this._url + id);
     }
 

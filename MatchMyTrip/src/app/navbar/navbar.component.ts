@@ -24,8 +24,8 @@ export class NavbarComponent implements OnInit {
   loadData(): any {
     console.log(this.userInfo);
     this.currentUser = new UserDTO();
-    this.currentUser.userName = this.userInfo.nickname;
-    this.currentUser.email = this.userInfo.name;
+    this.currentUser.userName = this.userInfo?.nickname;
+    this.currentUser.email = this.userInfo?.name;
     // this.user.sub = this.userInfo.sub;
     this.currentUser.role = 0;
   }

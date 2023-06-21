@@ -3,7 +3,9 @@ import { MatchDTO } from '../models/MatchDTO';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class MatchService {
     private _url: string = "http://localhost:5038/api/match/"
 
