@@ -19,6 +19,7 @@
       <p class="mb-1">Activités : </p>
       <ng-container *ngFor="let item of activitiesByJourney">
         <p class="mb-1">{{item.activityName}}</p>
+        <input type="button" class="btn-danger" value="Supprimer" (click)="deleteActivityFromJourney(item.id, journeyId)">
       </ng-container>
     </a>
   </div>
