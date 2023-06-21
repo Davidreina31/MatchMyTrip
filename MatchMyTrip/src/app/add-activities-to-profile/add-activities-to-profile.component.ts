@@ -23,7 +23,7 @@ export class AddActivitiesToProfileComponent implements OnInit {
   journeyId: any;
   isFormReady: boolean = false;
   form: FormGroup;
-  isActivityAlreadySelected: boolean = false;
+  errorMsg: string;
 
   constructor(
     private _journeyActivityService: Journey_ActivityService,
@@ -73,7 +73,10 @@ export class AddActivitiesToProfileComponent implements OnInit {
       this.journeyActivity.activityId = selectedActivities[i].id;
       this._journeyActivityService.add(this.journeyActivity).subscribe({
         next: () => this._router.navigate(["/my-profile"]),
-        error: (error) => console.log(error)
+        error: (error) => {
+          this.errorMsg = error.error;
+          console.log(error);
+        }
       })
     }
   }

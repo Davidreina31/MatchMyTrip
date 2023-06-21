@@ -13,6 +13,7 @@ export class ActivitiesComponent implements OnInit {
   activities: ActivityDTO[] = [];
   activity: ActivityDTO;
   form: FormGroup;
+  errorMsg: string;
 
   constructor(
     private _activityService: ActivityService,
@@ -37,7 +38,10 @@ export class ActivitiesComponent implements OnInit {
     this.activity.activityName = this.form.controls['activityName'].value;
     this._activityService.add(this.activity).subscribe({
       next: () => this.loadData(),
-      error: (error) => console.log(error)
+      error: (error) => {
+        this.errorMsg = error.error;
+        console.log(error);
+      }
     })
   }
 

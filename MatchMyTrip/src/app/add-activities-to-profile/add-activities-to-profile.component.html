@@ -19,7 +19,8 @@
       <p class="mb-1">Activités : </p>
       <ng-container *ngFor="let item of activitiesByJourney">
         <p class="mb-1">{{item.activityName}}</p>
-        <input type="button" class="btn-danger" value="Supprimer" (click)="deleteActivityFromJourney(item.id, journeyId)">
+        <input type="button" class="btn-danger" value="Supprimer"
+          (click)="deleteActivityFromJourney(item.id, journeyId)">
       </ng-container>
     </a>
   </div>
@@ -30,10 +31,11 @@
       <li *ngFor="let item of activities">
         <label>
           <input type="checkbox" [(ngModel)]="item.isSelected">
-          {{ item.activityName }} 
+          {{ item.activityName }}
         </label>
       </li>
     </ul>
+    <p style="color: red;">{{errorMsg}}</p>
     <button class="btn-success" (click)="addActivityToJourney()">Ajouter les activités au voyage</button>
   </div>
 </ng-container>
