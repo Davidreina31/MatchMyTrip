@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { ReportDTO } from '../models/ReportDTO';
 import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ReportService {
     private _url: string = "http://localhost:5038/api/report/"
 
@@ -17,15 +19,15 @@ export class ReportService {
         return this._client.get<ReportDTO[]>(this._url);
     }
 
-    public getOne(id: number): Observable<ReportDTO> {
+    public getOne(id: string): Observable<ReportDTO> {
         return this._client.get<ReportDTO>(this._url + id);
     }
 
-    public update(id: number, a: ReportDTO): Observable<void> {
+    public update(id: string, a: ReportDTO): Observable<void> {
         return this._client.put<void>(this._url + id, a);
     }
 
-    public delete(id: number): Observable<void> {
+    public delete(id: string): Observable<void> {
         return this._client.delete<void>(this._url + id);
     }
 

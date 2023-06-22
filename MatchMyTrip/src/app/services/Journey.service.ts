@@ -19,7 +19,7 @@ export class JourneyService {
         return this._client.get<JourneyDTO[]>(this._url);
     }
 
-    public getOne(id: number): Observable<JourneyDTO> {
+    public getOne(id: string): Observable<JourneyDTO> {
         return this._client.get<JourneyDTO>(this._url + id);
     }
 
@@ -27,11 +27,11 @@ export class JourneyService {
         return this._client.get<JourneyDTO[]>(this._url + "GetByProfileId/" + id);
     }
 
-    public update(id: number, a: JourneyDTO): Observable<void> {
+    public update(id: string, a: JourneyDTO): Observable<void> {
         return this._client.put<void>(this._url + id, a);
     }
 
-    public delete(id: number): Observable<void> {
+    public delete(id: string): Observable<void> {
         return this._client.delete<void>(this._url + id);
     }
 

@@ -19,7 +19,7 @@ export class UserService {
         return this._client.get<UserDTO[]>(this._url);
     }
 
-    public getById(id: number): Observable<UserDTO> {
+    public getById(id: string): Observable<UserDTO> {
         return this._client.get<UserDTO>(this._url + id);
     }
 

@@ -4,6 +4,29 @@
 <br>
 <br>
 <br>
-<p>
-  report works!
-</p>
+<br>
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Identifiant</th>
+        <th scope="col">Utilisateur signalé</th>
+        <th scope="col">Utilisateur le signalant</th>
+        <th scope="col">Voyage</th>
+        <th scope="col">Raison</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <div>
+        
+      </div>
+      <tr *ngFor="let item of this.report">
+        <th>{{item.id}}</th>
+        <td>{{item.journey.profile.userName}}</td>
+        <td>{{item.reporterUser.userName}}</td>
+        <td>{{item.journey.destination}}</td>
+        <td>{{item.reason}}</td>
+        <td><input type="button" class="btn-danger" value="Supprimer" (click)="deleteReport(item.id)"></td>
+      </tr>
+    </tbody>
+  </table>

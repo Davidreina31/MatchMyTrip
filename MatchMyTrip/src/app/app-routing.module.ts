@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddJourneyComponent } from './add-journey/add-journey.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { AddActivitiesToProfileComponent } from './add-activities-to-profile/add-activities-to-profile.component';
+import { AddReportComponent } from './add-report/add-report.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: 'add-activities/:id',
     component: AddActivitiesToProfileComponent
+  },
+  {
+    path: 'add-report/:id',
+    component: AddReportComponent
   },
 ];
 

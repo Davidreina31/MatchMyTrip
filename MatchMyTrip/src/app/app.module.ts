@@ -20,13 +20,14 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddJourneyComponent } from './add-journey/add-journey.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { AddActivitiesToProfileComponent } from './add-activities-to-profile/add-activities-to-profile.component';
+import { AddReportComponent } from './add-report/add-report.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("jwt");
 }
 
 @NgModule({
-  declarations: [														
+  declarations: [															
     AppComponent,
       HomeComponent,
       NavbarComponent,
@@ -39,7 +40,8 @@ export function tokenGetter() {
       ProfileComponent,
       AddJourneyComponent,
       ActivitiesComponent,
-      AddActivitiesToProfileComponent
+      AddActivitiesToProfileComponent,
+      AddReportComponent
    ],
   imports: [
     BrowserModule,

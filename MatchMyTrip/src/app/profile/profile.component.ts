@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileDTO } from '../models/ProfileDTO';
 import { ProfileService } from '../services/Profile.service';
 import { JourneyDTO } from '../models/JourneyDTO';
@@ -20,7 +20,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _profileService: ProfileService,
-    private _journeyService: JourneyService
+    private _journeyService: JourneyService,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -33,6 +34,10 @@ export class ProfileComponent implements OnInit {
         console.log(this.journeys);
       })
     })
+  }
+
+  report(id: string){
+    this._router.navigate(["/add-report/" + id]);
   }
 
 }
