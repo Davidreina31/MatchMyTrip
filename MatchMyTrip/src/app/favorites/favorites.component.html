@@ -9,7 +9,7 @@
   <ng-container *ngFor="let item of matchList">
     <br>
     <a class="list-group-item list-group-item-action flex-column align-items-start active"
-      routerLink="../../profile/{{item.profileId}}">
+      routerLink="../../profile/{{item.match.profileId}}">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">Destination : {{item?.match.destination}}</h5>
       </div>
