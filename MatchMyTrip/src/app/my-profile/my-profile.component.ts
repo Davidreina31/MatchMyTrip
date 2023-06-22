@@ -59,10 +59,11 @@ export class MyProfileComponent implements OnInit {
         }
         this._journeyService.getByProfileId(this.currentProfile.id).subscribe(data => {
           this.journeys = data;
-          this.isFormReady = true;
         })
       })
     })
+    this.isFormReady = true;
+
   }
 
   public createProfile() {
@@ -84,5 +85,12 @@ export class MyProfileComponent implements OnInit {
 
   public addActivity(id: string){
     this._router.navigate(["/add-activities/" + id]);
+  }
+
+  public deleteJourney(id: string){
+    this._journeyService.delete(id).subscribe({
+      next: () => this.loadData(),
+      error: (error) => console.log(error)
+    })
   }
 }

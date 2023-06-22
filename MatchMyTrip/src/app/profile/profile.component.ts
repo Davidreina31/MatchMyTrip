@@ -4,6 +4,7 @@ import { ProfileDTO } from '../models/ProfileDTO';
 import { ProfileService } from '../services/Profile.service';
 import { JourneyDTO } from '../models/JourneyDTO';
 import { JourneyService } from '../services/Journey.service';
+import { SessionService } from '../services/Session.service';
 
 @Component({
   selector: 'app-profile',
@@ -16,12 +17,12 @@ export class ProfileComponent implements OnInit {
   profileId: any;
   journeys: JourneyDTO[] = [];
 
-
   constructor(
     private _route: ActivatedRoute,
     private _profileService: ProfileService,
     private _journeyService: JourneyService,
-    private _router: Router
+    private _router: Router,
+    public _sessionService: SessionService
   ) { }
 
   ngOnInit() {

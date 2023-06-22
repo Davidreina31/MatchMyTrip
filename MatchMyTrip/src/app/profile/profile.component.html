@@ -48,6 +48,6 @@
         <li class="mb-1">{{a.activity.activityName}}</li>
       </ng-container>
     </a>
-    <td><input type="button" class="btn-danger" value="Signaler" (click)="report(item.id)"></td>
+    <td *ngIf="_sessionService.isLogged()"><input type="button" class="btn-danger" value="Signaler" (click)="report(item.id)"></td>
   </ng-container>
 </div>

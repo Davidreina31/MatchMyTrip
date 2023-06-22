@@ -1,0 +1,25 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="list-group">
+  <ng-container *ngFor="let item of matchList">
+    <br>
+    <a class="list-group-item list-group-item-action flex-column align-items-start active"
+      routerLink="../../profile/{{item.profileId}}">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Destination : {{item?.match.destination}}</h5>
+      </div>
+      <p *ngIf="item?.match?.seasons == 0" class="mb-1">Période : Printems</p>
+      <p *ngIf="item?.match?.seasons == 1" class="mb-1">Période : Eté</p>
+      <p *ngIf="item?.match?.seasons == 2" class="mb-1">Période : Automne</p>
+      <p *ngIf="item?.match?.seasons == 3" class="mb-1">Période : Hiver</p>
+      <p class="mb-1">Match Score : {{item?.match?.matchScore}}</p>
+    </a>
+    <br>
+    <input type="button" class="btn-danger" value="Supprimer" (click)="deleteMatchProfile(item.matchId, profileId)">
+  </ng-container>
+</div>

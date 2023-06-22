@@ -65,5 +65,7 @@
       <p *ngIf="item?.seasons == 3" class="mb-1">Période : Hiver</p>
       <p class="mb-1">Match Score : {{item?.matchScore}}</p>
     </a>
+    <br>
+    <button class="btn-success" (click)="addMatchToFavorite(item)">Ajouter aux favoris</button>
   </ng-container>
 </div>

@@ -70,6 +70,7 @@ export class AddReportComponent implements OnInit {
       this.report.reporterUserId = this.currentUser.id;
       this.report.reason = this.form.controls['report'].value;
       this.report.journey = this.journey;
+      this.report.journey.journey_Activities = [];
       this.report.journey.profile = this.profile;
       this.report.reporterUser = this.currentUser;
       console.log(this.report)
