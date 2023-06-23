@@ -30,7 +30,8 @@ export class UpdateProfileComponent implements OnInit {
       this.currentProfile = data;
       this.form = this._builder.group({
         userName: [this.currentProfile.userName, [Validators.required]],
-        description: [this.currentProfile.description, [Validators.required]]
+        description: [this.currentProfile.description, [Validators.required]],
+        profilePicture: [this.currentProfile.profilePicture, [Validators.required]],
       })
     })
 
@@ -42,6 +43,7 @@ export class UpdateProfileComponent implements OnInit {
     this.newProfile.id = this.profileId;
     this.newProfile.userName = this.form.controls['userName'].value;
     this.newProfile.description = this.form.controls['description'].value;
+    this.newProfile.profilePicture = this.form.controls['profilePicture'].value;
     this.newProfile.userId = this.currentProfile.userId
     this._profileService.update(this.profileId, this.newProfile).subscribe({
       next: () => this._router.navigate(["/my-profile"]),
