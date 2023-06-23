@@ -49,6 +49,14 @@ export class ProfileComponent implements OnInit {
   }
 
   loadData(){
+    this._profileService.getById(this.profileId).subscribe(data => {
+      this.currentProfile = data;
+      console.log(this.currentProfile);
+      this._journeyService.getByProfileId(this.currentProfile.id).subscribe(jData => {
+        this.journeys = jData;
+        console.log(this.journeys);
+      })
+    })
     this._userService.getBySub(this.userInfo.sub).subscribe(data => {
       this.currentUser = data;
       console.log(this.currentUser);
@@ -66,13 +74,7 @@ export class ProfileComponent implements OnInit {
         })
       })
     })
-    this._profileService.getById(this.profileId).subscribe(data => {
-      this.currentProfile = data;
-      this._journeyService.getByProfileId(this.currentProfile.id).subscribe(jData => {
-        this.journeys = jData;
-        console.log(this.journeys);
-      })
-    })
+    
 
     
   }

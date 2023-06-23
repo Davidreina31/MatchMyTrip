@@ -25,7 +25,6 @@ export class ReportComponent implements OnInit {
     private _reportService: ReportService,
     private _auth: AuthService,
     private _userService: UserService,
-    private _journeyService: JourneyService
 
   ) { }
 

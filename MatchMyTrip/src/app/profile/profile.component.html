@@ -30,7 +30,9 @@
   </div>
 </div>
 <br>
+<ng-container *ngIf="this._sessionService.isLogged()">
 <input type="button" class="btn btn-primary" value="Contacter" (click)="addRequest()">
+</ng-container>
 <br>
 <p style="color: red;">{{errorMsg}}</p>
 <p style="color: green;">{{coolMsg}}</p>

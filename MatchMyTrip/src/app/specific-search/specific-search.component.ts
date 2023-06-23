@@ -16,6 +16,7 @@ import { UserDTO } from '../models/UserDTO';
 import { AuthService } from '@auth0/auth0-angular';
 import { UserService } from '../services/User.service';
 import { Match_ProfileService } from '../services/Match_Profile.service';
+import { SessionService } from '../services/Session.service';
 
 @Component({
   selector: 'app-specific-search',
@@ -48,7 +49,8 @@ export class SpecificSearchComponent implements OnInit {
     private _activityService: ActivityService,
     private _authService: AuthService,
     private _userService: UserService,
-    private _matchProfileService: Match_ProfileService
+    private _matchProfileService: Match_ProfileService,
+    public _sessionService: SessionService
   ) { }
 
   ngOnInit() {
