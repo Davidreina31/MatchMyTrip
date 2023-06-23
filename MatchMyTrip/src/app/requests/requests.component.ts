@@ -26,6 +26,7 @@ export class RequestsComponent implements OnInit {
   loadData() {
     this._requestService.getAllByProfileId(this.profileId).subscribe(data => {
       this.requests = data;
+      console.log(this.requests);
     })
   }
 

@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
   request: RequestDTO;
   requests: RequestDTO[] = [];
   errorMsg: string;
+  coolMsg: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -53,6 +54,16 @@ export class ProfileComponent implements OnInit {
       console.log(this.currentUser);
       this._profileService.getByUserId(this.currentUser.id).subscribe(profileData => {
         this.profileConnected = profileData;
+        this._requestService.getAll().subscribe(requestData => {
+          this.requests = requestData;
+          console.log(this.requests);
+          for(let i = 0; i < this.requests.length; i++){
+            if(this.requests[i].profileReceiverId == this.profileId && this.requests[i].profileSenderId == this.profileConnected.id
+               && this.requests[i].isAccepted){
+              this.coolMsg = "Votre demande a été acceptée !"
+            }
+          }
+        })
       })
     })
     this._profileService.getById(this.profileId).subscribe(data => {
@@ -62,6 +73,8 @@ export class ProfileComponent implements OnInit {
         console.log(this.journeys);
       })
     })
+
+    
   }
   report(id: string){
     this._router.navigate(["/add-report/" + id]);
@@ -72,6 +85,7 @@ export class ProfileComponent implements OnInit {
     this.request.isAccepted = false;
     this.request.profileReceiverId = this.profileId;
     this.request.profileSenderId = this.profileConnected.id;
+    console.log(this.profileConnected);
     this.request.profileSender = this.profileConnected;
     this._requestService.add(this.request).subscribe({
       next: () => this.loadData(),
