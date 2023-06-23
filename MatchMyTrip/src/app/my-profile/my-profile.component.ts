@@ -72,6 +72,7 @@ export class MyProfileComponent implements OnInit {
       this.profile.userId = this.user.id;
       this.profile.userName = this.form.controls['userName'].value;
       this.profile.description = this.form.controls['description'].value;
+      this.profile.profilePicture = "";
       this._profileService.add(this.profile).subscribe({
         next: () => this.loadData(),
         error: (error) => console.log(error)

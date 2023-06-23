@@ -21,33 +21,38 @@ export class HomeComponent implements OnInit {
     , private _sessionService: SessionService
     , private _userService: UserService
     , private _router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
-    this.auth.user$.subscribe(data => {
-      this.userInfo = data;
-      this.loadData();
-    })
+    this.loadData();
+
   }
   loadData(): any {
-    this.user = new UserDTO();
-    this.user.userName = this.userInfo.nickname;
-    this.user.email = this.userInfo.name;
-    this.user.sub = this.userInfo.sub;
-    this.user.firstName = this.userInfo.name;
-    this.user.lastName = this.userInfo.name;
-    console.log(this.user);
+    this.auth.user$.subscribe(data => {
+      this.userInfo = data;
+      this.user = new UserDTO();
+      this.user.userName = this.userInfo.nickname;
+      this.user.email = this.userInfo.name;
+      this.user.sub = this.userInfo.sub;
+      this.user.firstName = this.userInfo.name;
+      this.user.lastName = this.userInfo.name;
+      console.log(this.user);
 
-    this._userService.add(this.user).subscribe({
-      next: () => this._router.navigate(["/home"]),
-      error: (error) => console.log(error)
-    });
+      this._userService.add(this.user).subscribe({
+        next: () => {
+          sessionStorage.removeItem("jwt"),
+            this.auth.logout()
+        },
+        error: (error) => console.log(error)
+      });
 
-    this._sessionService.getToken(this._sessionService.loginCredentials).subscribe(data=> {
-      console.log(data);
-      sessionStorage.setItem("jwt", data.access_token);
+      this._sessionService.getToken(this._sessionService.loginCredentials).subscribe(data => {
+        console.log(data);
+        sessionStorage.setItem("jwt", data.access_token);
+      })
+      console.log(this._sessionService.isLogged());
     })
-    console.log(this._sessionService.isLogged());
+
   }
 
 }
