@@ -1,0 +1,26 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<table class="table table-striped table-light">
+    <thead>
+      <tr>
+        <th scope="col">Pseudo</th>
+        <th scope="col">Action</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <div>
+        
+      </div>
+      <tr *ngFor="let item of this.requests">
+        <td>{{item.profileSender.userName}}</td>
+        <td><input type="button" class="btn-success" value="Accepter" (click)="acceptRequest(item)"></td>
+        <td><input type="button" class="btn-danger" value="Supprimer" (click)="deleteRequest(item.id)"></td>
+      </tr>
+    </tbody>
+  </table>

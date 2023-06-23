@@ -23,13 +23,14 @@ import { AddActivitiesToProfileComponent } from './add-activities-to-profile/add
 import { AddReportComponent } from './add-report/add-report.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ProfileManagementComponent } from './profile-management/profile-management.component';
+import { RequestsComponent } from './requests/requests.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem("jwt");
 }
 
 @NgModule({
-  declarations: [																	
+  declarations: [																		
     AppComponent,
       HomeComponent,
       NavbarComponent,
@@ -45,7 +46,8 @@ export function tokenGetter() {
       AddActivitiesToProfileComponent,
       AddReportComponent,
       FavoritesComponent,
-      ProfileManagementComponent
+      ProfileManagementComponent,
+      RequestsComponent
    ],
   imports: [
     BrowserModule,

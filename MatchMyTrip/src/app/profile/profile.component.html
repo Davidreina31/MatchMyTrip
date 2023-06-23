@@ -29,6 +29,10 @@
     </div>
   </div>
 </div>
+<br>
+<input type="button" class="btn btn-primary" value="Contacter" (click)="addRequest()">
+<br>
+<p style="color: red;">{{errorMsg}}</p>
 
 <div class="list-group">
   <ng-container *ngFor="let item of journeys">

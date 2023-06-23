@@ -14,6 +14,7 @@ import { AddActivitiesToProfileComponent } from './add-activities-to-profile/add
 import { AddReportComponent } from './add-report/add-report.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ProfileManagementComponent } from './profile-management/profile-management.component';
+import { RequestsComponent } from './requests/requests.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path: 'profile-management',
     component: ProfileManagementComponent
+  },
+  {
+    path: 'requests/:id',
+    component: RequestsComponent
   },
 ];
 
