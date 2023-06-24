@@ -75,7 +75,7 @@ export class AddReportComponent implements OnInit {
       this.report.reporterUser = this.currentUser;
       console.log(this.report)
       this._reportService.add(this.report).subscribe({
-        next: () => this._router.navigate(["/profile/" + this.profile.id]),
+        next: () => this._router.navigate(["/home"]),
         error: (error) => console.log(error)
       })
     }
