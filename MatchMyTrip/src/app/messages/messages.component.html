@@ -1,0 +1,41 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="page-content page-container" id="page-content">
+  <div class="padding">
+    <div class="row container d-flex justify-content-center">
+      <div class="col-md-6">
+        <div class="card card-bordered">
+          <div class="card-header">
+            <h4 class="card-title"><strong>Chat</strong></h4>
+          </div>
+
+
+          <div class="ps-container ps-theme-default ps-active-y" id="chat-content"
+            style="overflow-y: scroll !important; height:400px !important;">
+            <ng-container *ngFor="let item of messages">
+            <div [ngClass]="{'media media-chat': this.currentProfile.id != item.profileSenderId , 
+            'media media-chat media-chat-reverse': this.currentProfile.id == item.profileSenderId}" class="media media-chat">
+              <div class="media-body">
+                <p>{{item.messageText}}</p>
+              </div>
+            </div>
+          </ng-container>
+
+            <!-- <div class="media media-chat media-chat-reverse">
+              <div class="media-body">
+
+              </div>
+            </div> -->
+
+            <div class="publisher bt-1 border-light">
+              <input type="text" class="form-control" id="msgToSend" placeholder="message" [(ngModel)]="msgToSend">
+              <button class="btn btn-primary" (click)="sendMsg(msgToSend)">Envoyer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

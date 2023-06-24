@@ -10,6 +10,8 @@ import { AuthService } from '@auth0/auth0-angular';
 import { RequestService } from '../services/Request.service';
 import { UserDTO } from '../models/UserDTO';
 import { RequestDTO } from '../models/RequestDTO';
+import { ConversationDTO } from '../models/ConversationDTO';
+import { ConversationService } from '../services/Conversation.service';
 
 @Component({
   selector: 'app-profile',
@@ -28,6 +30,8 @@ export class ProfileComponent implements OnInit {
   requests: RequestDTO[] = [];
   errorMsg: string;
   coolMsg: string;
+  errorConversationMsg: string;
+  conversation: ConversationDTO;
 
   constructor(
     private _route: ActivatedRoute,
@@ -37,7 +41,8 @@ export class ProfileComponent implements OnInit {
     public _sessionService: SessionService,
     private _userService: UserService,
     private _authService: AuthService,
-    private _requestService: RequestService
+    private _requestService: RequestService,
+    private _conversationService: ConversationService
   ) { }
 
   ngOnInit() {
@@ -74,10 +79,24 @@ export class ProfileComponent implements OnInit {
         })
       })
     })
-    
-
-    
   }
+
+  startConversation(){
+    this.conversation = new ConversationDTO();
+    this.conversation.profileChatId = this.currentProfile.id;
+    this.conversation.profileConnectedId = this.profileConnected.id;
+    this.conversation.profileChat = this.currentProfile;
+    console.log(this.conversation);
+    this._conversationService.add(this.conversation).subscribe({
+      next: () => this.loadData(),
+      error: (error) => {
+        this.errorConversationMsg = error.error;
+        console.log(error);
+      }
+    })
+  }
+
+
   report(id: string){
     this._router.navigate(["/add-report/" + id]);
   }

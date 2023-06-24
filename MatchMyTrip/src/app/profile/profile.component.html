@@ -8,9 +8,8 @@
   <div class="bg-white shadow rounded overflow-hidden">
     <div class="px-4 pt-0 pb-4 cover">
       <div class="media align-items-end profile-head">
-        <div class="profile mr-3"><img
-            src="{{this.currentProfile.profilePicture}}"
-            alt="..." width="130" class="rounded mb-2 img-thumbnail"></div>
+        <div class="profile mr-3"><img src="{{this.currentProfile.profilePicture}}" alt="..." width="130"
+            class="rounded mb-2 img-thumbnail"></div>
 
         <div class="media-body mb-5 text-white">
           <h4 class="mt-0 mb-0">{{this.currentProfile.userName}}</h4>
@@ -31,11 +30,16 @@
 </div>
 <br>
 <ng-container *ngIf="this._sessionService.isLogged()">
-<input type="button" class="btn btn-primary" value="Contacter" (click)="addRequest()">
+  <input type="button" class="btn btn-primary" value="Contacter" (click)="addRequest()">
 </ng-container>
 <br>
 <p style="color: red;">{{errorMsg}}</p>
 <p style="color: green;">{{coolMsg}}</p>
+<ng-container *ngIf="coolMsg != null && coolMsg != undefined">
+  <input type="button" class="btn-primary" value="Démarrer conversation" (click)="startConversation()">
+</ng-container>
+<p style="color: red;">{{errorConversationMsg}}</p>
+
 
 <div class="list-group">
   <ng-container *ngFor="let item of journeys">
@@ -55,6 +59,7 @@
         <li class="mb-1">{{a.activity.activityName}}</li>
       </ng-container>
     </a>
-    <td *ngIf="_sessionService.isLogged()"><input type="button" class="btn-danger" value="Signaler" (click)="report(item.id)"></td>
+    <td *ngIf="_sessionService.isLogged()"><input type="button" class="btn-danger" value="Signaler"
+        (click)="report(item.id)"></td>
   </ng-container>
 </div>

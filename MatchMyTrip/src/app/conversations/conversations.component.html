@@ -1,0 +1,24 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="list-group">
+  <ng-container *ngFor="let item of conversations">
+    <br>
+    <a class="list-group-item list-group-item-action flex-column align-items-start active"
+      routerLink="../messages/{{item.id}}">
+      <div class="d-flex w-100 justify-content-between">
+        <ng-container *ngIf="this.currentProfile.userName != item?.profileChat.userName">
+        <h5 class="mb-1">{{item?.profileChat.userName}}</h5>
+      </ng-container>
+      <ng-container *ngIf="this.currentProfile.userName == item?.profileChat.userName">
+        <h5 class="mb-1">{{otherProfile.userName}}</h5>
+      </ng-container>
+      </div>
+    </a>
+    <br>
+  </ng-container>
+</div>

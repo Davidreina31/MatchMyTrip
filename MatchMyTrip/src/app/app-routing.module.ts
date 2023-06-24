@@ -15,6 +15,8 @@ import { AddReportComponent } from './add-report/add-report.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ProfileManagementComponent } from './profile-management/profile-management.component';
 import { RequestsComponent } from './requests/requests.component';
+import { ConversationsComponent } from './conversations/conversations.component';
+import { MessagesComponent } from './messages/messages.component';
 
 const routes: Routes = [
   {
@@ -81,6 +83,14 @@ const routes: Routes = [
   {
     path: 'requests/:id',
     component: RequestsComponent
+  },
+  {
+    path: 'conversations',
+    component: ConversationsComponent
+  },
+  {
+    path: 'messages/:id',
+    component: MessagesComponent
   },
 ];
 

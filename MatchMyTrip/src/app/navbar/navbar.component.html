@@ -16,9 +16,13 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                             style="color: white;" routerLink="/specific-search">Recherche spécifique</a></li>
                 </div>
-                <div *ngIf="this.currentProfile != null && this.currentProfile != undefined">
+                <div *ngIf="this._sessionService.isLogged() && this.currentProfile != null && this.currentProfile != undefined">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                             style="color: white;" routerLink="/requests/{{currentProfile.id}}">Mes demandes</a></li>
+                </div>
+                <div *ngIf="this._sessionService.isLogged()">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            style="color: white;" routerLink="/conversations">Mes messages</a></li>
                 </div>
                 <div *ngIf="!this._sessionService.isLogged()">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
